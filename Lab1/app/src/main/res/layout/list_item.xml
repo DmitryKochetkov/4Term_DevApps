@@ -9,12 +9,14 @@
         android:id="@+id/tv_num_item"
         style="@style/TextAppearance.AppCompat.Title"
         android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="120px"
+        android:layout_marginTop="20px"
         />
 
     <ImageView
         android:layout_width="100px"
         android:layout_height="100px"
-        android:layout_marginLeft="100px"
         android:id="@+id/im_item"
         android:src="@drawable/book_icon"
         />
