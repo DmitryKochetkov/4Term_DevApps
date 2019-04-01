@@ -31,7 +31,7 @@ public class NumAdapter extends RecyclerView.Adapter<NumAdapter.NumViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NumViewHolder numViewHolder, int i) {
-
+        numViewHolder.bind(i);
     }
 
     @Override
