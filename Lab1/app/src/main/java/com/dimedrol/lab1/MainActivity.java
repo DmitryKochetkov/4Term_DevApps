@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-
+        adapter = new NumAdapter(1000000);
+        recyclerView.setAdapter(adapter);
     }
 }
