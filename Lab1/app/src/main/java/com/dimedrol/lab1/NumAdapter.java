@@ -32,6 +32,8 @@ public class NumAdapter extends RecyclerView.Adapter<NumAdapter.NumViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull NumViewHolder numViewHolder, int i) {
         numViewHolder.bind(i);
+        if (i % 2 == 0)
+            numViewHolder.itemView.setBackgroundResource(R.color.grey);
     }
 
     @Override
