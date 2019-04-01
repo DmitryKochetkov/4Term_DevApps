@@ -9,9 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ibm.icu.text.RuleBasedNumberFormat;
+
+import java.util.Locale;
+
 public class NumAdapter extends RecyclerView.Adapter<NumAdapter.NumViewHolder> {
 
     private int length;
+    RuleBasedNumberFormat nf = new RuleBasedNumberFormat(Locale.forLanguageTag("ru"), RuleBasedNumberFormat.SPELLOUT);
 
     public NumAdapter(int count)
     {
@@ -31,7 +36,9 @@ public class NumAdapter extends RecyclerView.Adapter<NumAdapter.NumViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NumViewHolder numViewHolder, int i) {
-        numViewHolder.bind(i);
+        String s = nf.format(i+1);
+        numViewHolder.bind(s);
+
         if (i % 2 == 0)
             numViewHolder.itemView.setBackgroundResource(R.color.grey);
     }
@@ -54,6 +61,11 @@ public class NumAdapter extends RecyclerView.Adapter<NumAdapter.NumViewHolder> {
 
         void bind(int listIndex) {
             numView.setText(String.valueOf(listIndex));
+        }
+
+        void bind(String s)
+        {
+            numView.setText(s);
         }
     }
 }
