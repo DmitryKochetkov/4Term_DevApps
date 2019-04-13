@@ -1,57 +1,75 @@
 package com.dimedrol.lab2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import java.io.IOException;
+import java.util.ArrayList;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    JSONArray a;
+    private IRequester ir = NetworkService.getInstance().get_req();
+    private ArrayList<Tech> dat = new ArrayList<>();
+    private MyAsyncTask task = (MyAsyncTask) new MyAsyncTask();
+
+    class MyAsyncTask extends AsyncTask<Void, Void, Void>
+    {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Call<ArrayList<Tech>> call = ir.getTechs();
+            try
+            {
+                Response<ArrayList<Tech>> response = call.execute();
+                ArrayList<Tech> arr = response.body();
+                assert arr != null;
+                dat.addAll(arr);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void o) {
+            super.onPostExecute(o);
+            Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        String url = "https://raw.githubusercontent.com/wesleywerner/ancienttech/02decf875616dd9692b31658d92e64a20d99f816/src/data/techs.ruleset.json";
-        String url_img = "https://raw.githubusercontent.com/wesleywerner/ancienttech/02decf875616dd9692b31658d92e64a20d99f816/src/images/tech/";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("");
-                    for (int i = 1; i < jsonArray.length(); i++) { //i = 1?
-                        JSONObject tech = jsonArray.getJSONObject(i);
-                        String graphic = tech.getString("graphic");
-                        String name = tech.getString("name");
-                        //String helptext = tech.getString("helptext");
-                    }
-                    a = jsonArray;
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        RecyclerView r = findViewById(R.id.recycler);
+        if(!isOnline(this))
+        {
+            Toast.makeText(this, "Missing connection", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else task.execute();
 
-        Intent intent = new Intent(this, MainActivity.class);
 
-        startActivity(intent);
+    }
+
+    public static boolean isOnline(Context context)
+    {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }
