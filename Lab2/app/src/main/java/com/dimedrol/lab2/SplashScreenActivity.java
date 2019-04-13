@@ -18,7 +18,8 @@ import retrofit2.Response;
 public class SplashScreenActivity extends AppCompatActivity {
 
     private IRequester ir = NetworkService.getInstance().get_req();
-    private ArrayList<Tech> dat = new ArrayList<>();
+    private TechData dat = new TechData();
+    //private ArrayList<Tech> dat = new ArrayList<>();
     private MyAsyncTask task = (MyAsyncTask) new MyAsyncTask();
 
     class MyAsyncTask extends AsyncTask<Void, Void, Void>
@@ -62,8 +63,6 @@ public class SplashScreenActivity extends AppCompatActivity {
             return;
         }
         else task.execute();
-
-
     }
 
     public static boolean isOnline(Context context)
