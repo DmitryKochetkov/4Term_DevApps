@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class TechAdapter extends RecyclerView.Adapter<TechAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
@@ -29,7 +31,7 @@ public class TechAdapter extends RecyclerView.Adapter<TechAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.mTextView.setText(TechData.get(i).getName());
-
+        Picasso.get().load(TechData.get(i).getGraphicUrl()).placeholder(R.drawable.civ_icon).into(viewHolder.mImageView);
     }
 
     @Override
