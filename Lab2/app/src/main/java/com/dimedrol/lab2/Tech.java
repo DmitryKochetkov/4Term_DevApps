@@ -14,7 +14,7 @@ public class Tech {
     @Expose
     private String helptext;
 
-    public static final String url = "https://raw.githubusercontent.com/wesleywerner/ancient-tech/02decf875616dd9692b31658d92e64a20d99f816/src/";
+    public static final String url = "https://raw.githubusercontent.com/wesleywerner/ancient-tech/02decf875616dd9692b31658d92e64a20d99f816/src/images/tech/";
 
     public String getGraphicUrl() {
         return url + graphicUrl;
