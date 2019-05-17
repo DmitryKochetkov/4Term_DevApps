@@ -15,6 +15,7 @@ public class TechAdapter extends RecyclerView.Adapter<TechAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
     private Context context;
+    private static ClickListener clickListener;
 
     public TechAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
@@ -39,7 +40,7 @@ public class TechAdapter extends RecyclerView.Adapter<TechAdapter.ViewHolder> {
         return TechData.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final ImageView mImageView;
         private final TextView mTextView;
@@ -48,6 +49,23 @@ public class TechAdapter extends RecyclerView.Adapter<TechAdapter.ViewHolder> {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.image_view);
             mTextView = (TextView) itemView.findViewById(R.id.text_view);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v)
+        {
+            clickListener.onItemClick(v, getAdapterPosition());
+        }
+    }
+
+    public interface ClickListener
+    {
+        void onItemClick(View view, int position);
+    }
+
+    public void setOnClickListener(ClickListener clickListener)
+    {
+        TechAdapter.clickListener = clickListener;
     }
 }
