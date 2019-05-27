@@ -9,6 +9,7 @@
         android:layout_height="200dp" />
     
     <TextView
+        android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textAlignment="center"
