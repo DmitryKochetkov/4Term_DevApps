@@ -18,17 +18,20 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/show"/>
-
-        <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add"/>
+            android:text="@string/show"
+            android:id="@+id/button1"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ivan"/>
+            android:text="@string/add"
+            android:id="@+id/button2"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ivan"
+            android:id="@+id/button3"/>
 
     </LinearLayout>
 
