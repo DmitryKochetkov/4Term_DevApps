@@ -46,7 +46,7 @@ public class PageAdapter extends PagerAdapter
         ImageView imageView = (ImageView) view.findViewById(R.id.image_view_pager);
         TextView textView = (TextView) view.findViewById(R.id.text_view);
 
-        if(TechData.get(position).getHelptext() != null)   //если у технологии есть описание, использовать его в качестве текта к pager view
+        if (TechData.get(position).getHelptext() != null)
         {
             textView.setText(TechData.get(position).getHelptext());
         }
@@ -55,10 +55,8 @@ public class PageAdapter extends PagerAdapter
             textView.setText("This technology has no description");
         }
 
-        /*Glide.with(context)
-                .load(DataClass.civilizations.get(position).getGraphic())
-                .into(imageView);*/
-        Picasso.get()   //загрузка изображения с помощью библиотеки picasso через url
+
+        Picasso.get()
                 .load(TechData.get(position).getGraphicUrl())
                 .placeholder(R.drawable.civ_icon)
                 .into(imageView);
