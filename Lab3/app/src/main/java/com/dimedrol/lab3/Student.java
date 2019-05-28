@@ -23,4 +23,10 @@ public class Student {
         String timeText = timeFormat.format(date);
         this.date = dateText + ", " + timeText;
     }
+
+    public Student(int id, String fio, String date) {
+        this.id = id;
+        this.fio = fio;
+        this.date = date;
+    }
 }

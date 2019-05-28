@@ -16,6 +16,6 @@ public class DataActivity extends AppCompatActivity {
 
         //RecyclerView rw = findViewById(R.id.list);
         TextView rw = findViewById(R.id.list);
-        rw.setText(dbHelper.getStudents().get(0).fio);
+        rw.setText(dbHelper.getStudents().get(0).id + " " + dbHelper.getStudents().get(0).fio);
     }
 }

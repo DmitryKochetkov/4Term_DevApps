@@ -56,7 +56,7 @@ public class DBHelper extends SQLiteOpenHelper {
             int fioIndex = cursor.getColumnIndex(DBHelper.KEY_FIO);
             int timeIndex = cursor.getColumnIndex(DBHelper.KEY_DATE);
             do {
-                Student student = new Student(cursor.getString(fioIndex), cursor.getString(timeIndex));
+                Student student = new Student(cursor.getInt(idIndex), cursor.getString(fioIndex), cursor.getString(timeIndex));
                 res.add(student);
             } while (cursor.moveToNext());
         }
