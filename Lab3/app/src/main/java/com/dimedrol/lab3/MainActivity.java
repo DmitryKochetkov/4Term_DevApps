@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     String[] rndSurnames = new String[]{"Пучков", "Большаков", "Васильев", "Андреев", "Петров", "Иванов", "Синицын", "Сергеев"};
     String[] rndSecondnames = new String[]{"Витальевич", "Иванович", "Ильич", "Сергеевич", "Альбертович", "Николаевич", "Евгеньевич"};
 
+    DBHelper dbHelper = new DBHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             int n3 = (int)Math.floor(Math.random() * rndSecondnames.length);
             String fio = rndSurnames[n1] + " " + rndNames[n2] + " " + rndSecondnames[n3];
             Student student = new Student(fio, now);
-            //add student to db
+            dbHelper.addStudent(student);
         }
 
 
