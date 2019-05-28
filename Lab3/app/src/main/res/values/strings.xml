@@ -3,5 +3,6 @@
     <string name="show">Show Students Database</string>
     <string name="add">Add Student</string>
     <string name="ivan">Ivan Ivanovich</string>
-    <string name="fio">Name</string>
+    <string name="fio">Full Name</string>
+    <string name="ok">OK</string>
 </resources>
