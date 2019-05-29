@@ -14,8 +14,8 @@ public class DataActivity extends AppCompatActivity {
 
         DBHelper dbHelper = new DBHelper(this);
 
-        //RecyclerView rw = findViewById(R.id.list);
-        TextView rw = findViewById(R.id.list);
-        rw.setText(dbHelper.getStudents().get(0).id + " " + dbHelper.getStudents().get(0).fio);
+        RecyclerView rw = (RecyclerView) findViewById(R.id.list);
+        StudentAdapter adapter = new StudentAdapter(dbHelper.getStudents(), this);
+        rw.setAdapter(adapter);
     }
 }
