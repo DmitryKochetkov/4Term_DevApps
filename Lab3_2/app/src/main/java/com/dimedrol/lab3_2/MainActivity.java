@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             int n1 = (int)Math.floor(Math.random() * rndSurnames.length);
             int n2 = (int)Math.floor(Math.random() * rndNames.length);
             int n3 = (int)Math.floor(Math.random() * rndSecondnames.length);
-            Student student = new Student(rndSurnames[n1], rndSecondnames[n3], rndNames[n2], now);
+            Student student = new Student(rndSurnames[n1], rndNames[n2], rndSecondnames[n3], now);
             dbHelper.addStudent(student);
         }
 
