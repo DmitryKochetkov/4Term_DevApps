@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lab3_2</string>
+    <string name="show">Show Students Database</string>
+    <string name="add">Add Student</string>
+    <string name="ivan">Ivan Ivanovich</string>
+    <string name="first_name">First Name</string>
+    <string name="second_name">Second Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="ok">OK</string>
+</resources>
