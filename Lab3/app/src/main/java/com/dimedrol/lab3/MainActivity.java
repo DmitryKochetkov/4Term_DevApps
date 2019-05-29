@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        dbHelper.clear();
         for (int i = 0; i < 10; i++)
         {
             Date now = new Date();
@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
             Student student = new Student(fio, now);
             dbHelper.addStudent(student);
         }
-
 
         Button button1 = (Button) findViewById(R.id.button1);
         Button button2 = (Button) findViewById(R.id.button2);

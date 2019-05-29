@@ -65,5 +65,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    
+    public void clear()
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(DBHelper.TABLE_STUDENTS, null, null);
+    }
 }
