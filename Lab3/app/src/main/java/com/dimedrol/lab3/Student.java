@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Student {
-    int id; //нужно ли?
+    int id;
     String fio;
     String date;
 

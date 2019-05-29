@@ -70,4 +70,12 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(DBHelper.TABLE_STUDENTS, null, null);
     }
+
+    public void Ivan()
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBHelper.KEY_FIO, "Иванов Иван Иванович");
+        db.update(TABLE_STUDENTS, contentValues, KEY_ID + " = (SELECT MAX(" + KEY_ID + ") FROM " + TABLE_STUDENTS + ");", null);
+    }
 }
