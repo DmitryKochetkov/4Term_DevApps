@@ -2,4 +2,5 @@
     <string name="app_name">Lab4</string>
     <string name="add_widget">Add widget</string>
     <string name="wid_text">Notification date:</string>
+    <string name="choice">Choose the date for notification:</string>
 </resources>
